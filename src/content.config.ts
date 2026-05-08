@@ -17,4 +17,15 @@ const blog = defineCollection({
 		}),
 });
 
-export const collections = { blog };
+const events = defineCollection({
+	loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/events" }),
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		pubDate: z.coerce.date(), // You can use this for the event date
+		heroImage: z.string().optional(),
+		location: z.string().default('TBA'), // Extra field specifically for events!
+	}),
+});
+
+export const collections = { blog, events };
