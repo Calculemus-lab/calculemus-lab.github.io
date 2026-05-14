@@ -1,5 +1,5 @@
 ---
-title: "[DUMMY PLACEHOLDER] Calculemus Kick-off & Hackathon"
+title: "Calculemus Kick-off & Hackathon (Dummy)"
 description: "Join us for the very first AI team meetup of the year."
 pubDate: "May 25 2026"
 location: "Snellius Building, Room 412"
