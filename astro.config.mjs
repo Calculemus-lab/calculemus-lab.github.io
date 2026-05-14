@@ -6,8 +6,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://rutgerberger.github.io',
-	base: '/calculemus-site',
+	site: 'https://calculemus-lab.github.io',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
