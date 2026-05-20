@@ -7,7 +7,10 @@ import HeaderLink from './HeaderLink.astro';
     <nav>
         <!-- Top bar: Always visible (Title + Hamburger) -->
         <div class="nav-top">
-            <h2><a href="/">{SITE_TITLE}</a></h2>
+        <a href="/" class="logo-link">
+                <!-- Assuming the logo is in your public/ folder -->
+                <img src="/icon_large.png" alt="Calculemus Logo" class="logo" />
+            </a>
             <button id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
                 <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="hamburger">
                     <line x1="3" y1="12" x2="21" y2="12" class="line-middle"></line>
@@ -57,15 +60,14 @@ import HeaderLink from './HeaderLink.astro';
     header {
         margin: 0;
         padding: 0;
-        background: white; 
-        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+        background: transparent;
         position: relative;
     }
     nav {
         display: flex;
         align-items: center;
         padding: 0 1em;
-        height: 70px; /* Fixed height makes vertical alignment perfect */
+        min-height: 90px; /* Fixed height makes vertical alignment perfect */
         max-width: 1200px;
         margin: 0 auto;
     }
@@ -82,7 +84,7 @@ import HeaderLink from './HeaderLink.astro';
     }
     h2 a {
         text-decoration: none;
-        color: var(--black); 
+        color: var(--gray-light); 
     }
     
     /* Hamburger strictly hidden on desktop */
@@ -105,7 +107,7 @@ import HeaderLink from './HeaderLink.astro';
         flex: 1; /* Pushes the social links to the far right */
     }
     .internal-links a {
-        color: var(--black); 
+        color: var(--gray-light); 
         text-decoration: none;
         font-weight: 500;
         padding: 0.5em 0;
@@ -126,7 +128,7 @@ import HeaderLink from './HeaderLink.astro';
     }
     .social-links a {
         display: flex;
-        color: var(--black); 
+        color: var(--gray-light); 
         transition: opacity 0.2s;
     }
     .social-links a:hover {
@@ -139,6 +141,17 @@ import HeaderLink from './HeaderLink.astro';
         background-color: currentColor; 
         -webkit-mask: url('/Leiden_University_seal.svg_-2686666985.png') no-repeat center / contain;
         mask: url('/Leiden_University_seal.svg_-2686666985.png') no-repeat center / contain;
+    }
+
+    .logo {
+            height: 50px; /* Adjust this number to make it as big as you want! */
+            width: auto;  /* This ensures the image doesn't stretch out of proportion */
+            display: block; /* Removes weird spacing under images */
+        }
+    
+    .logo-link {
+        display: flex;
+        align-items: center;
     }
 
     /* =========================================
@@ -167,7 +180,7 @@ import HeaderLink from './HeaderLink.astro';
             background: transparent;
             border: none;
             cursor: pointer;
-            color: var(--black);
+            color: var(--gray-light);
             padding: 0.5em;
         }
 

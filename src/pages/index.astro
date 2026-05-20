@@ -7,43 +7,221 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			.hero {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-				min-height: 60vh;
-				text-align: center;
-			}
-			.glitch-title {
-				font-size: 4rem;
-				font-weight: bold;
-				margin-bottom: 0.5rem;
-				letter-spacing: 0.1em;
-				text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-			}
-			.subtitle {
-				font-size: 1.2rem;
-				color: var(--gray);
-				max-width: 600px;
-				margin: 0 auto;
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<div class="hero">
-				<h1 class="title">C\<br>\ALCULEMUS</h1>
-				<p class="subtitle">
-					Exploring the boundaries of Artificial Intelligence. 
-					<br/> Computing the future, one node at a time.
-				</p>
-			</div>
-		</main>
-		<Footer />
-	</body>
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+        <style>
+            /* 1. Base Dark Theme */
+            body {
+                color: #000000;
+                margin: 0;z
+                font-family: system-ui, -apple-system, sans-serif;
+            }
+
+            main {
+                width: 100%;
+                overflow: hidden;
+            }
+
+            /* Screen Reader Only - Keeps your site SEO friendly when using an image for the main title */
+            .sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border-width: 0;
+            }
+
+            /* 2. Hero Section */
+            .hero {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 80vh;
+                text-align: center;
+                padding: 0 1rem;
+            }
+
+            /* The glowing "AI Core" behind the logo */
+            .glow-orb {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 60vw;
+                height: 60vw;
+                max-width: 600px;
+                max-height: 600px;
+                background: radial-gradient(circle, rgba(255, 246, 246, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+                z-index: -1;
+                filter: blur(40px);
+            }
+			
+			.hero-logo {
+                /* clamp(Minimum, Preferred %, Maximum) */
+                width: clamp(280px, 50vw, 1200px); 
+                height: auto;
+                margin-bottom: 0rem;
+                /* Applies a subtle glowing shadow matching the exact shape of your PNG! */
+                filter: drop-shadow(0 0 50px rgba(59, 93, 246, 0.4));
+                z-index: 1;
+            }
+
+            .subtitle {
+                font-size: clamp(1.2rem, 2vw, 1.25rem);
+                color: #453FFE;
+                max-width: 600px;
+                margin: 1rem auto 10rem auto;
+                line-height: 1.6;
+                z-index: 1;
+				text-align: left;
+            }
+
+            /* 3. Call to Action Buttons */
+            .cta-group {
+                display: flex;
+                gap: 1rem;
+                justify-content: center;
+                flex-wrap: wrap;
+                z-index: 1;
+            }
+
+            .btn {
+                padding: 0.75rem 1.5rem;
+                border-radius: 9px;
+                font-weight: 600;
+                text-decoration: none;
+                transition: all 0.2s ease;
+                font-size: 0.95rem;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+            }
+
+            .btn.primary {
+                background-color: #453FFE;
+                color: white;
+                box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+            }
+
+            .btn.primary:hover {
+                background-color: #2563eb;
+                box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
+                transform: translateY(-2px);
+            }
+
+            .btn.secondary {
+                background-color: rgba(255, 255, 255, 0.05);
+                color: #453FFE;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+            }
+
+            .btn.secondary:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
+            }
+
+            /* 4. Features/Vectors Section */
+            .vectors {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 4rem 1rem 8rem 1rem;
+            }
+
+            .vectors-title {
+                text-align: center;
+                font-size: 2rem;
+                margin-bottom: 3rem;
+                color: #2563eb;
+            }
+
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+
+            /* "Glassmorphism" cards for a tech look */
+            .card {
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 16px;
+                padding: 2rem;
+                backdrop-filter: blur(10px);
+                transition: transform 0.3s ease, border-color 0.3s ease;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+                border-color: rgba(59, 130, 246, 0.4);
+                background: rgba(255, 255, 255, 0.05);
+            }
+
+            .card h3 {
+                margin-top: 0;
+                color: #453FFE;
+                font-size: 1.25rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .card p {
+                color: var(--gray-light);
+                font-size: 0.95rem;
+                line-height: 1.6;
+                margin-bottom: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <Header />
+        <main>
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="glow-orb"></div>
+                
+                <!-- Hidden H1 for Search Engines (SEO) -->
+                <h1 class="sr-only">Calculemus</h1>
+                
+                <!-- Your Central Logo -->
+                <img src="/calculemus_logo.png" alt="Calculemus Logo" class="hero-logo" />
+
+                <p class="subtitle"> 
+					Leiden University's official AI team<br />
+                </p>
+                <div class="cta-group">
+                    <a href="/team" class="btn primary">Meet the Team</a>
+                    <a href="/news" class="btn secondary">Latest Work</a>
+                </div>
+            </section>
+
+            <!-- Focus Areas Section -->
+            <section class="vectors">
+                <h2 class="vectors-title">What we do</h2>
+				<p class="subtitle"> The AI team offers motivated students a good time to explore the applications of AI beyond their studies. We actively participate within AI challenges and and organize events on our own </p>
+                <div class="grid">
+                    <div class="card">
+                        <h3>AI Competitions</h3>
+                        <p>Find new ideas.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Community Events</h3>
+                        <p>Inspire others.</p>
+                    </div>
+                    <div class="card">
+                        <h3><...></h3>
+                        <p>Your brilliant idea here.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <Footer />
+    </body>
 </html>
