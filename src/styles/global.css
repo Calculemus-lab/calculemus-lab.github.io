@@ -23,7 +23,7 @@ body {
   background-color: #f7f3ed;
   /* background: linear-gradient(135deg, #f5ed81 0%, #e4cb3f 50%, #cf9426 100%); */
   /* background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e1b4b 100%); */
-  color: var(--white);
+  color: var(--gray-light);
   word-wrap: break-word;
   overflow-wrap: break-word;
   min-height: 100vh;
