@@ -1,7 +1,7 @@
 ---
 title: "Calculemus Mini-Hackathon"
 description: "Are you ready to improve your own studying?"
-pubDate: "May 25 2026"
+pubDate: "June 12 2026"
 location: "Gorlaeus Building"
 ---
 
