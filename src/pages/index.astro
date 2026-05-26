@@ -13,20 +13,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
             /* 1. Base Dark Theme */
             body {
                 color: #000000;
-                margin: 0;
+                margin: 0;z
                 font-family: system-ui, -apple-system, sans-serif;
-                background-color: #f7f3ed; /* Base off-white background */
             }
 
             main {
                 width: 100%;
                 overflow: hidden;
-                position: relative; /* Keeps the absolute background contained */
             }
 
-            /* Screen Reader Only */
+            /* Screen Reader Only - Keeps your site SEO friendly when using an image for the main title */
             .sr-only {
-                position: absolute;
+                position: absolutefa;
                 width: 1px;
                 height: 1px;
                 padding: 0;
@@ -36,55 +34,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
                 white-space: nowrap;
                 border-width: 0;
             }
-
-            /* --- ANIMATED GRADIENT MESH --- */
-            .blob-container {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                overflow: hidden;
-                z-index: -2;
-                pointer-events: none; /* Prevents blobs from blocking clicks */
-            }
-
-            .blob {
-                position: absolute;
-                border-radius: 50%;
-                filter: blur(120px);
-                opacity: 0.5; /* Subtlety control */
-                animation: float 20s infinite ease-in-out alternate;
-            }
-
-            .blob-blue {
-                width: 60vw;
-                height: 60vw;
-                max-width: 500px;
-                max-height: 500px;
-                background: #453FFE; /* Your brand blue */
-                top: -5%;
-                left: 10%;
-                animation-delay: -5s; /* Desync the movement */
-            }
-
-            .blob-pink {
-                width: 50vw;
-                height: 50vw;
-                max-width: 400px;
-                max-height: 900px;
-                background: #ff90de; /* Soft pink complement */
-                top: 20%;
-                right: -15%;
-                animation-delay: -5s; /* Desync the movement */
-            }
-
-            @keyframes float {
-                0% { transform: translate(0, 0) scale(1); }
-                50% { transform: translate(100px, 50px) scale(1.1); }
-                100% { transform: translate(-50px, 100px) scale(0.9); }
-            }
-            /* ------------------------------ */
 
             /* 2. Hero Section */
             .hero {
@@ -97,12 +46,29 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
                 text-align: center;
                 padding: 0 1rem;
             }
-            
-            .hero-logo {
+
+            /* The glowing "AI Core" behind the logo */
+            .glow-orb {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 60vw;
+                height: 60vw;
+                max-width: 600px;
+                max-height: 600px;
+                background: radial-gradient(circle, rgba(255, 246, 246, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
+                z-index: -1;
+                filter: blur(40px);
+            }
+			
+			.hero-logo {
+                /* clamp(Minimum, Preferred %, Maximum) */
                 width: clamp(280px, 50vw, 1200px); 
                 height: auto;
                 margin-bottom: 0rem;
-                filter: drop-shadow(0 0 50px rgba(69, 63, 254, 0.3)); /* Tinted drop shadow to match brand */
+                /* Applies a subtle glowing shadow matching the exact shape of your PNG! */
+                filter: drop-shadow(0 0 50px rgba(59, 93, 246, 0.4));
                 z-index: 1;
             }
 
@@ -113,7 +79,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
                 margin: 1rem auto 10rem auto;
                 line-height: 1.6;
                 z-index: 1;
-                text-align: left;
+				text-align: left;
             }
 
             /* 3. Call to Action Buttons */
@@ -139,25 +105,25 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
             .btn.primary {
                 background-color: #453FFE;
                 color: white;
-                box-shadow: 0 0 15px rgba(69, 63, 254, 0.4);
+                box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
             }
 
             .btn.primary:hover {
                 background-color: #2563eb;
-                box-shadow: 0 0 25px rgba(69, 63, 254, 0.6);
+                box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
                 transform: translateY(-2px);
             }
 
             .btn.secondary {
-                background-color: rgba(255, 255, 255, 0.4); /* Slightly visible background */
+                background-color: rgba(255, 255, 255, 0.05);
                 color: #453FFE;
-                border: 1px solid rgba(69, 63, 254, 0.2); /* Tinted border */
+                border: 1px solid rgba(255, 255, 255, 0.1);
                 backdrop-filter: blur(10px);
             }
 
             .btn.secondary:hover {
-                background-color: rgba(255, 255, 255, 0.8);
-                border-color: rgba(69, 63, 254, 0.4);
+                background-color: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.2);
                 transform: translateY(-2px);
             }
 
@@ -166,8 +132,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
                 max-width: 1200px;
                 margin: 0 auto;
                 padding: 4rem 1rem 8rem 1rem;
-                position: relative; /* Keeps z-index stacking correct */
-                z-index: 1;
             }
 
             .vectors-title {
@@ -183,21 +147,20 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
                 gap: 2rem;
             }
 
-            /* Updated Glassmorphism cards for light theme */
+            /* "Glassmorphism" cards for a tech look */
             .card {
-                background: rgba(255, 255, 255, 0.6);
-                border: 1px solid rgba(255, 255, 255, 0.8);
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.05);
                 border-radius: 16px;
                 padding: 2rem;
-                backdrop-filter: blur(12px);
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); /* Soft shadow */
-                transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+                backdrop-filter: blur(10px);
+                transition: transform 0.3s ease, border-color 0.3s ease;
             }
 
             .card:hover {
                 transform: translateY(-5px);
-                border-color: rgba(69, 63, 254, 0.4);
-                box-shadow: 0 10px 15px -3px rgba(69, 63, 254, 0.1);
+                border-color: rgba(59, 130, 246, 0.4);
+                background: rgba(255, 255, 255, 0.05);
             }
 
             .card h3 {
@@ -210,7 +173,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
             }
 
             .card p {
-                color: #334155; /* Darker gray for readability on light background */
+                color: var(--gray-light);
                 font-size: 0.95rem;
                 line-height: 1.6;
                 margin-bottom: 0;
@@ -220,18 +183,18 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
     <body>
         <Header />
         <main>
-            <div class="blob-container">
-                <div class="blob blob-blue"></div>
-                <div class="blob blob-pink"></div>
-            </div>
-
+            <!-- Hero Section -->
             <section class="hero">
+                <div class="glow-orb"></div>
+                
+                <!-- Hidden H1 for Search Engines (SEO) -->
                 <h1 class="sr-only">Calculemus</h1>
                 
+                <!-- Your Central Logo -->
                 <img src="/calculemus_logo.png" alt="Calculemus Logo" class="hero-logo" />
 
                 <p class="subtitle"> 
-                    Leiden University's official AI team<br />
+					Leiden University's official AI team<br />
                 </p>
                 <div class="cta-group">
                     <a href="/team" class="btn primary">Meet the Team</a>
@@ -239,11 +202,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
                 </div>
             </section>
 
+            <!-- Focus Areas Section -->
             <section class="vectors">
                 <h2 class="vectors-title">What we do</h2>
-                <p class="subtitle" style="text-align: center; margin: 0 auto 3rem auto;"> 
-                    The AI team offers motivated students a good time to explore the applications of AI beyond their studies. We actively participate within AI challenges and organize events on our own.
-                </p>
+				<p class="subtitle"> The AI team offers motivated students a good time to explore the applications of AI beyond their studies. We actively participate within AI challenges and and organize events on our own </p>
                 <div class="grid">
                     <div class="card">
                         <h3>AI Competitions</h3>
