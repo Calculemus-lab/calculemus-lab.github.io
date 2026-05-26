@@ -2,7 +2,7 @@
 title: 'Our Journey Begins: AI Engineering at Leiden University'
 description: 'Announcing our new roles as AI Engineers for the Leiden University team.'
 pubDate: 'May 14 2026'
-heroImage: '../../../public/calculemus_logo.png'
+heroImage: '../../assets/gorlaeusbuilding.jpg'
 ---
 
 We are incredibly excited to announce that we have officially started our journey as AI Engineers for the Leiden University team. This marks the beginning of an existing new era where we will apply our knowledge to advance research, build intelligent systems, and contribute to the university's innovative ecosystem. 

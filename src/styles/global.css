@@ -75,7 +75,7 @@ a {
   transition: color 0.2s ease-in-out;
 }
 a:hover {
-  color: #60a5fa;
+  color: rgb(20, 19, 83);
 }
 p {
 	margin-bottom: 1em;
