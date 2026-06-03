@@ -17,10 +17,11 @@ Pizza, drinks, and competitive action are fully included!
 ---
 
 ### 📅 Schedule (Friday, June 12)
-* **13:00 - 13:30** | Walk-in, Team Formations & Baseline Setup
-* **13:30 - 17:00** | **HACKATHON ALIVE:** Coding & Building
+* **12:30 - 13:00** | Walk-in, Team Formations & Chatting
+* **13:00 - 13:30** | Presentation of Challenge.
+* **13:30 - 17:00** | **HACKING HOURS:** Coding & Building
 * **17:00 - 17:45** | Project Demonstrations & Judging
-* **17:45 - 18:00+** | Winner Announcement, Celebratory Drinks 🥤
+* **17:45 - 18:00+** | Winner Announcements, Celebratory Drinks 🥤
 
 ---
 
@@ -31,7 +32,7 @@ Don't worry, you won't have to start from scratch! We will supply a robust **Pyt
 ---
 
 #### 🏆 Prizes
-We have some awesome goodies for the final winner.
+We have some awesome goodies for the final winners.
 
 ---
 
