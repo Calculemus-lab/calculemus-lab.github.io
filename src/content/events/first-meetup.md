@@ -2,7 +2,7 @@
 title: "Calculemus Mini-Hackathon"
 description: "Are you ready to improve your own studying?"
 pubDate: "June 12 2026"
-location: "Gorlaeus Building"
+location: "BM1.23 Gorlaeus Building"
 ---
 
 Welcome to the first official event of **Calculemus**! Ready to put theory into practice? Bring your laptop and your sharpest ideas, because we are diving straight into building smart solutions with modern AI frameworks. 
