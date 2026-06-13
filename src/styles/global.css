@@ -15,23 +15,34 @@
   --gray-dark: #cbd5e1;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; /* Fallback for older browsers */
+  height: 100dvh; /* Dynamic height specifically for mobile Safari/Chrome */
+  background: url('/bg_edit.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* This forces it to fill the screen! */
+  z-index: -1; /* Pushes the background behind your text */
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', sans-serif;
   text-align: left;
-  background: url('/bg_edit.png');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  /* background-color: #f7f3ed; */
-  /* background: linear-gradient(135deg, #f5ed81 0%, #e4cb3f 50%, #cf9426 100%); */
-  /* background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e1b4b 100%); */
   color: var(--gray-light);
   word-wrap: break-word;
   overflow-wrap: break-word;
   min-height: 100vh;
   overflow-x: hidden;
+  
+  /* Add this to ensure the pseudo-element stays behind the content */
+  position: relative; 
 }
 
 * {
