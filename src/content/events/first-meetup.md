@@ -7,9 +7,6 @@ location: "BM1.23 Gorlaeus Building"
 
 Welcome to the first official event of **Calculemus**! Ready to put theory into practice? Bring your laptop and your sharpest ideas, because we are diving straight into building smart solutions with modern AI frameworks. 
 
-[REGISTER HERE](https://form.typeform.com/to/OXAbnU5Q)
-
-
 Brightspace and scattered course materials can be a nightmare to find all the information you need. This Friday, your mission is to solve that. More information will follow at the walk-in.
 
 Pizza, drinks, and competitive action are fully included!

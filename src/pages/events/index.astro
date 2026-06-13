@@ -6,38 +6,75 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 
-// Fetch all events and sort by date
-const events = (await getCollection('events')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
-);
+const allEvents = await getCollection('events');
+
+const now = new Date();
+
+const upcomingEvents = allEvents
+    .filter((event) => event.data.pubDate.valueOf() >= now.valueOf())
+    .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+
+const pastEvents = allEvents
+    .filter((event) => event.data.pubDate.valueOf() < now.valueOf())
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={`Events | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<ul>
-					{
-						events.map((event) => (
-							<li>
-								<a href={`/events/${event.id}/`}>
-									<h4 class="title">{event.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={event.data.pubDate} />
-									</p>
-									<p>📍 {event.data.location}</p>
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
+    <head>
+        <BaseHead title={`Events | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <section>
+                <h3>Upcoming Events</h3>
+                {upcomingEvents.length > 0 ? (
+                    <ul>
+                        {
+                            upcomingEvents.map((event) => (
+                                <li>
+                                    <a href={`/events/${event.id}/`}>
+                                        <h4 class="title">{event.data.title}</h4>
+                                        <p class="date">
+                                            <FormattedDate date={event.data.pubDate} />
+                                        </p>
+                                        <p>📍 {event.data.location}</p>
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                ) : (
+                    <p>No upcoming events scheduled at the moment. Check back soon!</p>
+                )}
+            </section>
+
+            <hr />
+
+            <section>
+                <h3>Past Events</h3>
+                {pastEvents.length > 0 ? (
+                    <ul>
+                        {
+                            pastEvents.map((event) => (
+                                <li>
+                                    <a href={`/events/${event.id}/`}>
+                                        <h4 class="title">{event.data.title}</h4>
+                                        <p class="date">
+                                            <FormattedDate date={event.data.pubDate} />
+                                        </p>
+                                        <p>📍 {event.data.location}</p>
+                                    </a>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                ) : (
+                    <p>No past events to show.</p>
+                )}
+            </section>
+        </main>
+        <Footer />
+    </body>
 </html>
