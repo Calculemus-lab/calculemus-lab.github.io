@@ -9,11 +9,14 @@ compute: "8x NVIDIA A100 (80GB)"
 startDate: "2026-05-10"
 ---
 
-### System Architecture
+### Challenge
 
-This project maps out the efficiency of running large-scale evaluation tasks distributed across multiple GPU nodes. Rather than relying on standard benchmark wrappers, we built a custom routing layer to handle batching asynchronously.
+<...>
 
-#### Current Progress
-* Integrated DeepSpeed for inference optimization.
-* Set up node-to-node communication over Ray.
-* Currently running baseline MMLU evaluations.
+### Progress
+
+We cannot tell anything about this just yet.
+
+### Expected outcome
+
+Well well
