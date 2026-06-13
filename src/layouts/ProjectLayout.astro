@@ -1,0 +1,104 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+
+const { title, description, status, repository, framework, modelSize, compute, startDate } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={`${title} | Projects | ${SITE_TITLE}`} description={description} />
+        <style>
+            .dashboard-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+                margin-bottom: 2rem;
+                padding: 1.5rem;
+                background-color: #f8f9fa;
+                border: 1px solid #e9ecef;
+                border-radius: 8px;
+            }
+            .metric-card {
+                display: flex;
+                flex-direction: column;
+                border-left: 3px solid #333;
+                padding-left: 1rem;
+            }
+            .metric-label {
+                font-size: 0.85rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: #6c757d;
+                margin-bottom: 0.25rem;
+            }
+            .metric-value {
+                font-family: 'Courier New', Courier, monospace;
+                font-weight: bold;
+                font-size: 1.1rem;
+                color: #212529;
+            }
+            .status-badge {
+                display: inline-block;
+                padding: 0.25rem 0.5rem;
+                font-size: 0.85rem;
+                font-family: 'Courier New', Courier, monospace;
+                background: #e9ecef;
+                border-radius: 4px;
+                border: 1px solid #ced4da;
+            }
+            .project-content {
+                line-height: 1.6;
+            }
+        </style>
+    </head>
+    <body>
+        <Header />
+        <main>
+            <article>
+                <header>
+                    <h1>{title}</h1>
+                    <p>{description}</p>
+                    <hr />
+                </header>
+
+                <section class="dashboard-grid">
+                    <div class="metric-card">
+                        <span class="metric-label">System Status</span>
+                        <span class="metric-value"><span class="status-badge">{status}</span></span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-label">Core Framework</span>
+                        <span class="metric-value">{framework}</span>
+                    </div>
+                    {modelSize && (
+                        <div class="metric-card">
+                            <span class="metric-label">Architecture / Size</span>
+                            <span class="metric-value">{modelSize}</span>
+                        </div>
+                    )}
+                    {compute && (
+                        <div class="metric-card">
+                            <span class="metric-label">Training Compute</span>
+                            <span class="metric-value">{compute}</span>
+                        </div>
+                    )}
+                    {repository && (
+                        <div class="metric-card">
+                            <span class="metric-label">Repository</span>
+                            <a href={repository} target="_blank" class="metric-value">View Source ↗</a>
+                        </div>
+                    )}
+                </section>
+
+                <div class="project-content">
+                    <slot />
+                </div>
+            </article>
+        </main>
+        <Footer />
+    </body>
+</html>
