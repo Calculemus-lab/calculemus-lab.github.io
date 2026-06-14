@@ -23,6 +23,6 @@ At the same time, we prepared three prompts to evaluate their agent on a given e
 
 ### Winners
 
-We prepared two prizes: one that passes the prompts and parses the information most correctly, and one for the overall impression. Team 'Calo & Co' (Catherine Smeyers, Beyza Celep, Matiss Kalnare, Carlos Moreira) went home with the most robust solution that actually was able to retrieve visual information from the provided course files. Finally, 'Re3ve' (Catherine Smeyers, Beyza Celep, Matiss Kalnare, Carlos Moreira) showed up with a clever and creative solution. Well done guys!
+We prepared two prizes: one that passes the prompts and parses the information most correctly, and one for the overall impression. Team 'Calo & Co' (Catherine Smeyers, Beyza Celep, Matiss Kalnare, Carlos Moreira) went home with the most robust solution that actually was able to retrieve visual information from the provided course files. Finally, 'Re3ieve' (Travis Chauvin, Lucas Danielian, Nicolas Rodriguez Fernandez, Jaime Rey Pardo Del Olmo) showed up with a clever and creative solution. Well done guys!
 
 ![One of the winning team of the Calculemus hackathon](../../assets/blog/hackathon/1781304747303.jpg)
