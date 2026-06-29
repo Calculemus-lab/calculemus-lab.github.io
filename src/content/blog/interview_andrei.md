@@ -33,7 +33,7 @@ Another great thing about Zurich are the events. Just this week, I am going to a
 
 **You mentioned that a lot of people there are talking about AGI. Do you think this is already happening? Do you see current LLM architectures as a sufficient backbone to reach AGI? Why (not) and what are the biggest challenges?**
 
-veryone has a different definition of AGI, the idea is not if we have it or not, but to pay attention to it, to debate it, to monitor the latest progress and to try the frontier models and capabilities. I think it's a spectrum, we have jagged (or partial) AGI - for some jobs, you can do in a couple of hours what an expert could have taken weeks. One can do the work of a year in a month. Still, it's terrible outside of big labs' training distribution, e.g. video editing.
+Everyone has a different definition of AGI, the idea is not if we have it or not, but to pay attention to it, to debate it, to monitor the latest progress and to try the frontier models and capabilities. I think it's a spectrum, we have jagged (or partial) AGI - for some jobs, you can do in a couple of hours what an expert could have taken weeks. One can do the work of a year in a month. Still, it's terrible outside of big labs' training distribution, e.g. video editing.
 
 **What sub-field do you believe is the most under-hyped but promising to deliver breakthroughs in AI in the upcoming times (e.g., world-models, edge computing, post-training recipes, etc.)?**
 
