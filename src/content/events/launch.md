@@ -1,7 +1,7 @@
 ---
 title: "Calculemus Launch"
 description: "Coming soon."
-pubDate: "September 2026"
+pubDate: "11 September 2026"
 location: "Gorlaeus Building"
 ---
 
