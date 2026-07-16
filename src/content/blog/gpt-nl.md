@@ -7,7 +7,7 @@ heroImage: '../../assets/blog/interviews/gptnl.png'
 
 ### Saskia Lensink: Behind the Scenes of the Dutch LLM
 
-Recent months, Saskia Lensink has served as Product Manager for [GPT-NL](https://gpt-nl.nl/). She's leading the project to a place where pivotal Dutch organizations are able to use a secure and sovereign alternative to China's or America's products. In this interview, she provides a good insight into the difficulties of positioning themselves within a public setting and the choices that this requires the makers of GPT-NL to make.
+Recent months, Saskia Lensink has been serving as Product Manager for [GPT-NL](https://gpt-nl.nl/). She's leading the project to a place where pivotal Dutch organizations are able to use a secure and sovereign alternative to China's or America's products. In this interview, she provides a good insight into the difficulties of positioning themselves within a public setting and the choices that this requires the makers of GPT-NL to make.
 
 **Where does the project currently stand, and what are the biggest challenges toward the launch in autumn 2026?**
 
