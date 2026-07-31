@@ -34,7 +34,7 @@ const projects = defineCollection({
     schema: z.object({
         title: z.string(),
         description: z.string(),
-        status: z.enum(['Planning', 'Active', 'Deployed', 'Archived']),
+        status: z.enum(['Planning', 'Active', 'Deployed', 'Archived', 'Done']),
         repository: z.string().url().optional(),
         framework: z.string(),
         modelSize: z.string().optional(),

@@ -1,7 +1,7 @@
 ---
 title: "OrbitWars"
 description: "A fast, JAX-accelerated reinforcement learning agent for the OrbitWars Kaggle competition."
-status: "Active"
+status: "Done"
 framework: "JAX / Gymnax / PyTorch"
 startDate: "2026-06-13"
 repository: "https://github.com/Calculemus-lab/OrbitWars"
@@ -24,7 +24,7 @@ This project is about building a high-performance reinforcement learning agent f
 - **Abstraction & Simulation**: The agent shall receive abstracted informations that focus on current and future shipcounts of planets. To this end, we leverage *Jax* for fast simulation of the environment. 
 
 
-### Tech Stack
+### Stack
 
 - **Core**: *Python*, *JAX*, *jaxlib*
 - **Simulation**: *kaggle-environments*, *gymnax*
