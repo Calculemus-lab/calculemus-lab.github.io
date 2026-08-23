@@ -1,37 +1,95 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
-import { ORGANIZATION } from '../consts';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ORGANIZATION, SITE_TITLE } from '../consts';
 ---
 
-<Layout
-    title={`About ${ORGANIZATION.name}`}
+<BaseLayout
+    title={`About ${ORGANIZATION.name} | ${SITE_TITLE}`}
     description={`The student-run AI team at ${ORGANIZATION.fullUniversity}.`}
-    pubDate={new Date('May 08 2026')}
 >
-    <img src="/us.jpg" alt={`The ${ORGANIZATION.name} team`} />
+    <article class="team-page-container reveal-on-scroll">
+        <header class="page-header">
+            <h1>About {ORGANIZATION.name}</h1>
+            <p class="subtitle">The student-run AI team at {ORGANIZATION.fullUniversity}</p>
+            <hr />
+        </header>
 
-    <p>
-        <strong>"{ORGANIZATION.name}"</strong> means <em>Let us calculate</em>. It's a phrase from Leibniz, who wanted to solve problems purely through computation. We're a team of computer science and AI students of <strong>{ORGANIZATION.fullUniversity}</strong> solving challenges of the current (scientific) community.
-    </p>
+        <div class="team-hero-image">
+            <img src="/us.jpg" alt={`The ${ORGANIZATION.name} team`} />
+        </div>
 
-    <h4>What we do</h4>
-    <p>
-        We focus on the mechanics of artificial intelligence, by participating all kinds of AI-related challenges. We like to puzzle and be creative. Our team consists of AI engineers, coordinators and team managers.
-    </p>
+        <div class="prose">
+            <p>
+                <strong>"{ORGANIZATION.name}"</strong> means <em>Let us calculate</em>. It's a phrase from Leibniz, who wanted to solve problems purely through computation. We're a team of computer science and AI students of <strong>{ORGANIZATION.fullUniversity}</strong> solving challenges of the current (scientific) community.
+            </p>
 
-    <h4>The Community</h4>
-    <p>
-        Studying AI is easier (and a lot more fun) when you aren't doing it alone. {ORGANIZATION.name} acts as a place for students who want to build, debug, or research together. We run a few main events throughout the year:
-    </p>
-    <ul>
-        <li><strong>Tech Talks:</strong> Technical deep dives by ({ORGANIZATION.department}) researchers and industry.</li>
-        <li><strong>Hackathons:</strong> Short (and highly energized) sprints to build working models from scratch.</li>
-        <li><strong>Game Nights:</strong> Low-key evenings where we bring laptops, grab pizza, and try to beat our self-made agents.</li>
-    </ul>
-    <p>On top of that, we host interviews with current leaders and pioneers in the AI landscape. Feel free to reach out if you're having an interesting research-topic.</p>
+            <h3>What we do</h3>
+            <p>
+                We focus on the mechanics of artificial intelligence, by participating all kinds of AI-related challenges. We like to puzzle and be creative. Our team consists of AI engineers, coordinators and team managers.
+            </p>
 
-    <h4>Join us</h4>
-    <p>
-        Whether you're a master's student training models for your thesis or a first-year who just wrote their first PyTorch training loop, you're welcome here. Check out our <a href="/events">Events</a> page to see when we're meeting next.
-    </p>
-</Layout>
+            <h3>The Community</h3>
+            <p>
+                Studying AI is easier (and a lot more fun) when you aren't doing it alone. {ORGANIZATION.name} acts as a place for students who want to build, debug, or research together. We run a few main events throughout the year:
+            </p>
+            <ul>
+                <li><strong>Tech Talks:</strong> Technical deep dives by ({ORGANIZATION.department}) researchers and industry.</li>
+                <li><strong>Hackathons:</strong> Short (and highly energized) sprints to build working models from scratch.</li>
+                <li><strong>Game Nights:</strong> Low-key evenings where we bring laptops, grab pizza, and try to beat our self-made agents.</li>
+            </ul>
+            <p>On top of that, we host interviews with current leaders and pioneers in the AI landscape. Feel free to reach out if you're having an interesting research-topic.</p>
+
+            <h3>Join us</h3>
+            <p>
+                Whether you're a master's student training models for your thesis or a first-year who just wrote their first PyTorch training loop, you're welcome here. Check out our <a href="/events">Events</a> page to see when we're meeting next.
+            </p>
+        </div>
+    </article>
+</BaseLayout>
+
+<style>
+    .team-page-container {
+        max-width: var(--max-width-main);
+        margin: 0 auto;
+    }
+    .page-header {
+        margin-bottom: 2rem;
+    }
+    .page-header h1 {
+        font-size: 2.5rem;
+        color: var(--black);
+        margin-bottom: 0.5rem;
+    }
+    .subtitle {
+        font-size: 1.1rem;
+        color: var(--gray-slate);
+        margin-bottom: 1.5rem;
+    }
+    .team-hero-image {
+        margin-bottom: 2rem;
+    }
+    .team-hero-image img {
+        width: 100%;
+        border-radius: var(--radius-lg);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        display: block;
+    }
+    .prose {
+        color: var(--gray-slate);
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+    .prose h3 {
+        color: var(--black);
+        margin-top: 2em;
+        margin-bottom: 0.75em;
+        font-size: 1.5rem;
+    }
+    .prose p, .prose li {
+        color: var(--gray-slate);
+        margin-bottom: 1.5em;
+    }
+    .prose strong {
+        color: var(--black);
+    }
+</style>
