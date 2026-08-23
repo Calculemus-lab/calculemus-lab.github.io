@@ -21,12 +21,13 @@
 		const canvas = document.getElementById('bg-canvas') as HTMLCanvasElement;
 		if (!canvas) return;
 
-		// Disable canvas animation on single blog posts and team page
+		// Disable canvas animation on single reading pages: blog posts, single project pages, and team page
 		const pathname = window.location.pathname;
 		const isSingleBlogPost = pathname.startsWith('/blog/') && pathname !== '/blog' && pathname !== '/blog/';
+		const isSingleProjectPage = pathname.startsWith('/projects/') && pathname !== '/projects' && pathname !== '/projects/';
 		const isTeamPage = pathname === '/team' || pathname === '/team/';
 
-		if (isSingleBlogPost || isTeamPage) {
+		if (isSingleBlogPost || isSingleProjectPage || isTeamPage) {
 			canvas.style.display = 'none';
 			return;
 		} else {
