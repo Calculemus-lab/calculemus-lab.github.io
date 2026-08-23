@@ -10,7 +10,7 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} theme="dark">
 	<article class="blog-post-article">
 		<!-- Back Navigation -->
 		<div class="nav-back-container">

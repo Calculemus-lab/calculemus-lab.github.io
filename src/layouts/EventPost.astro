@@ -9,7 +9,7 @@ type Props = CollectionEntry<'events'>['data'];
 const { title, description, pubDate, heroImage, location } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} theme="dark">
 	<article>
 		<div class="hero-image">
 			{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
