@@ -7,9 +7,9 @@ export function setupInteractions() {
 		document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
 	});
 
-	// 2. Subtle 3D Tilt Effect on Cards & Logo
+	// 2. Subtle 3D Tilt Effect on Cards & Logo (excluding Blog posts/lists)
 	const tiltElements = document.querySelectorAll<HTMLElement>(
-		'.card, .project-card, .event-card, .blog-list li, .hero-logo'
+		'.card, .project-card, .event-card, .hero-logo'
 	);
 
 	tiltElements.forEach((el) => {
@@ -24,7 +24,6 @@ export function setupInteractions() {
 			const centerX = rect.width / 2;
 			const centerY = rect.height / 2;
 
-			// Reduced 3D tilt factors (from 8 to 3.5) for a refined, subtle effect
 			const rotateX = ((y - centerY) / centerY) * -3.5;
 			const rotateY = ((x - centerX) / centerX) * 3.5;
 

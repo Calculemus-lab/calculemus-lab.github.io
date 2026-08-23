@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import { ORGANIZATION } from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -10,125 +11,310 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
-    <article>
-        <header class="blog-header">
-            <div class="title">
-                <div class="date">
-                    <FormattedDate date={pubDate} />
-                    {
-                        updatedDate && (
-                            <span class="last-updated-on">
-                                &bull; Updated <FormattedDate date={updatedDate} />
-                            </span>
-                        )
-                    }
-                </div>
-                <h1>{title}</h1>
-            </div>
-        </header>
-        
-        <div class="hero-image">
-            {heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-        </div>
+	<article class="blog-post-article">
+		<!-- Back Navigation -->
+		<div class="nav-back-container">
+			<a href="/blog" class="back-link">
+				<span class="arrow">&larr;</span> Back to Articles
+			</a>
+		</div>
 
-        <div class="prose">
-            <slot />
-        </div>
-    </article>
+		<!-- Creative Editorial Header Card -->
+		<header class="blog-hero-card reveal-on-scroll">
+			<div class="header-badge">
+				<span class="category-tag">ARTICLE // {ORGANIZATION.name.toUpperCase()}</span>
+			</div>
+			
+			<h1 class="post-title">{title}</h1>
+			
+			{description && <p class="post-description">{description}</p>}
+
+			<div class="meta-bar">
+				<div class="meta-item">
+					<span class="meta-icon">📅</span>
+					<FormattedDate date={pubDate} />
+					{
+						updatedDate && (
+							<span class="last-updated-on">
+								&bull; Updated <FormattedDate date={updatedDate} />
+							</span>
+						)
+					}
+				</div>
+				<div class="meta-divider">&bull;</div>
+				<div class="meta-item">
+					<span class="meta-icon">⏱️</span> 3 min read
+				</div>
+			</div>
+		</header>
+		
+		<!-- Featured Hero Image -->
+		{
+			heroImage && (
+				<div class="hero-image-frame reveal-on-scroll">
+					<Image width={1020} height={510} src={heroImage} alt={title} />
+				</div>
+			)
+		}
+
+		<!-- Article Content -->
+		<div class="prose reveal-on-scroll">
+			<slot />
+		</div>
+
+		<!-- Article Sign-off Footer -->
+		<footer class="post-footer-card reveal-on-scroll">
+			<div class="author-info">
+				<h3>Published by {ORGANIZATION.name} AI Team</h3>
+				<p>{ORGANIZATION.fullUniversity} — Computing the future of AI. We build and connect.</p>
+			</div>
+			<div class="footer-actions">
+				<a href="/blog" class="btn secondary">More Articles</a>
+				<a href="/events" class="btn primary">Upcoming Events</a>
+			</div>
+		</footer>
+	</article>
 </BaseLayout>
 
 <style>
-    .blog-header {
-        max-width: 900px;
-        margin: 3em auto 2em auto;
-        text-align: center;
-    }
-    .title {
-        margin-bottom: 2em;
-    }
-    .title h1 {
-        font-size: clamp(2.5rem, 5vw, 4rem); 
-        font-weight: 800;
-        line-height: 1.2;
-        margin: 0.2em 0;
-        color: var(--black);
-        letter-spacing: -0.02em;
-    }
-    .date {
-        font-size: 0.95rem;
-        color: var(--gray-slate);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-weight: 600;
-    }
-    .hero-image {
-        max-width: 840px;
-        margin: 0 auto 3em auto;
-    }
-    .hero-image :global(img) {
-        display: block;
-        width: 100%;
-        max-height: 450px;
-        object-fit: cover;
-        border-radius: var(--radius-lg);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-    .prose {
-        max-width: var(--max-width-main);
-        margin: auto;
-        padding: 1em 0;
-        color: var(--gray-slate);
-        font-size: 1.125rem;
-        line-height: 1.8;
-    }
+	.blog-post-article {
+		max-width: 820px;
+		margin: 0 auto;
+	}
 
-    .prose :global(h1), .prose :global(h2), .prose :global(h3), .prose :global(h4) {
-        color: var(--black);
-        margin-top: 2em;
-        margin-bottom: 0.75em;
-        font-weight: 700;
-    }
-    .prose :global(p), .prose :global(li) {
-        margin-bottom: 1.5em;
-        color: var(--gray-slate);
-    }
-    .prose :global(strong) {
-        color: var(--black);
-    }
-    .prose :global(img) {
-        max-width: 100%;
-        height: auto;
-        border-radius: var(--radius-md);
-        margin: 2em auto;
-        display: block;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    }
-    .prose :global(blockquote) {
-        border-left: 4px solid var(--accent);
-        background: var(--bg-card);
-        padding: 1.2em 1.5em;
-        margin: 2em 0;
-        border-radius: 0 var(--radius-md) var(--radius-md) 0;
-        font-style: italic;
-        color: var(--gray-slate);
-    }
-    .prose :global(pre) {
-        border-radius: var(--radius-md);
-        padding: 1.5em;
-        margin: 1.5em 0;
-        box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-    }
+	/* Back Navigation */
+	.nav-back-container {
+		margin-bottom: 1.5rem;
+	}
+	.back-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--gray-slate);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		transition: color 0.2s ease, transform 0.2s ease;
+	}
+	.back-link:hover {
+		color: var(--accent);
+		transform: translateX(-4px);
+	}
 
-    @media (max-width: 720px) {
-        .blog-header {
-            margin: 1.5em auto;
-        }
-        .hero-image :global(img) {
-            border-radius: var(--radius-md);
-            max-height: 300px;
-        }
-        .prose {
-            font-size: 1rem;
-        }
-    }
+	/* Editorial Header Card */
+	.blog-hero-card {
+		background: var(--bg-card);
+		border: 1px solid var(--border-subtle);
+		border-left: 4px solid var(--accent);
+		border-radius: var(--radius-lg);
+		padding: 2.5rem;
+		margin-bottom: 2.5rem;
+		backdrop-filter: blur(12px);
+		box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+	}
+
+	.header-badge {
+		margin-bottom: 1rem;
+	}
+	.category-tag {
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		font-weight: 700;
+		color: var(--accent);
+		background: var(--bg-muted);
+		padding: 0.3rem 0.75rem;
+		border-radius: var(--radius-sm);
+		border: 1px solid var(--border-accent);
+		letter-spacing: 0.08em;
+	}
+
+	.post-title {
+		font-size: clamp(2.2rem, 4vw, 3.2rem);
+		font-weight: 800;
+		line-height: 1.15;
+		color: var(--black);
+		margin: 0.5rem 0 1rem 0;
+		letter-spacing: -0.02em;
+	}
+
+	.post-description {
+		font-size: 1.15rem;
+		line-height: 1.6;
+		color: var(--gray-slate);
+		margin-bottom: 1.5rem;
+	}
+
+	.meta-bar {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		font-size: 0.9rem;
+		color: var(--text-muted);
+		border-top: 1px solid var(--border-subtle);
+		padding-top: 1rem;
+	}
+
+	.meta-item {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+	.meta-divider {
+		color: var(--border-light);
+	}
+
+	/* Hero Image Frame */
+	.hero-image-frame {
+		margin-bottom: 3rem;
+	}
+	.hero-image-frame :global(img) {
+		display: block;
+		width: 100%;
+		max-height: 480px;
+		object-fit: cover;
+		border-radius: var(--radius-lg);
+		border: 1px solid var(--border-subtle);
+		box-shadow: 0 12px 35px var(--accent-glow);
+	}
+
+	/* Prose Content Styling */
+	.prose {
+		max-width: var(--max-width-main);
+		margin: 0 auto 4rem auto;
+		color: var(--gray-slate);
+		font-size: 1.125rem;
+		line-height: 1.8;
+	}
+
+	.prose :global(h1), 
+	.prose :global(h2), 
+	.prose :global(h3), 
+	.prose :global(h4) {
+		color: var(--black);
+		margin-top: 2.2em;
+		margin-bottom: 0.8em;
+		font-weight: 700;
+		line-height: 1.25;
+	}
+
+	.prose :global(h2) {
+		font-size: 1.8rem;
+		border-bottom: 2px solid var(--border-subtle);
+		padding-bottom: 0.4rem;
+	}
+
+	.prose :global(p), 
+	.prose :global(li) {
+		margin-bottom: 1.6em;
+		color: var(--gray-slate);
+	}
+
+	.prose :global(strong) {
+		color: var(--black);
+	}
+
+	.prose :global(img) {
+		max-width: 100%;
+		height: auto;
+		border-radius: var(--radius-md);
+		margin: 2em auto;
+		display: block;
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+	}
+
+	.prose :global(blockquote) {
+		border-left: 4px solid var(--accent);
+		background: var(--bg-card);
+		padding: 1.2em 1.5em;
+		margin: 2em 0;
+		border-radius: 0 var(--radius-md) var(--radius-md) 0;
+		font-style: italic;
+		color: var(--black);
+		box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+	}
+
+	.prose :global(pre) {
+		border-radius: var(--radius-md);
+		padding: 1.5em;
+		margin: 1.8em 0;
+		box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+	}
+
+	/* Post Footer Sign-off */
+	.post-footer-card {
+		background: var(--bg-card);
+		border: 1px solid var(--border-subtle);
+		border-radius: var(--radius-lg);
+		padding: 2rem;
+		margin-top: 3rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1.5rem;
+		backdrop-filter: blur(10px);
+	}
+
+	.author-info h3 {
+		margin: 0 0 0.4rem 0;
+		font-size: 1.2rem;
+		color: var(--black);
+	}
+
+	.author-info p {
+		margin: 0;
+		font-size: 0.95rem;
+		color: var(--gray-slate);
+	}
+
+	.footer-actions {
+		display: flex;
+		gap: 0.75rem;
+	}
+
+	.btn {
+		padding: 0.6rem 1.2rem;
+		border-radius: var(--radius-md);
+		font-size: 0.85rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+
+	.btn.primary {
+		background-color: var(--accent);
+		color: var(--white);
+	}
+
+	.btn.primary:hover {
+		background-color: var(--accent-hover);
+	}
+
+	.btn.secondary {
+		background-color: var(--bg-muted);
+		color: var(--black);
+		border: 1px solid var(--border-subtle);
+	}
+
+	.btn.secondary:hover {
+		background-color: var(--bg-card-hover);
+	}
+
+	@media (max-width: 720px) {
+		.blog-hero-card {
+			padding: 1.5rem;
+		}
+		.post-footer-card {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+		.prose {
+			font-size: 1rem;
+		}
+	}
 </style>
