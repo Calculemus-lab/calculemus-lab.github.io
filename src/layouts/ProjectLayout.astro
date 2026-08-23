@@ -1,11 +1,24 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import { SITE_TITLE } from '../consts';
+import BaseLayout from "./BaseLayout.astro";
+import { SITE_TITLE } from "../consts";
 
-const { title, description, status, repository, framework, modelSize, compute, startDate } = Astro.props;
+const {
+    title,
+    description,
+    status,
+    repository,
+    framework,
+    modelSize,
+    compute,
+    startDate,
+} = Astro.props;
 ---
 
-<BaseLayout title={`${title} | Projects | ${SITE_TITLE}`} description={description} theme="dark">
+<BaseLayout
+    title={`${title} | Projects | ${SITE_TITLE}`}
+    description={description}
+    theme="dark"
+>
     <article>
         <header>
             <h1>{title}</h1>
@@ -15,31 +28,45 @@ const { title, description, status, repository, framework, modelSize, compute, s
 
         <section class="dashboard-grid">
             <div class="metric-card">
-                <span class="metric-label">System Status</span>
-                <span class="metric-value"><span class="status-badge">{status}</span></span>
+                <span class="metric-label">Status</span>
+                <span class="metric-value"
+                    ><span class="status-badge">{status}</span></span
+                >
             </div>
             <div class="metric-card">
                 <span class="metric-label">Core Framework</span>
                 <span class="metric-value">{framework}</span>
             </div>
-            {modelSize && (
-                <div class="metric-card">
-                    <span class="metric-label">Architecture / Size</span>
-                    <span class="metric-value">{modelSize}</span>
-                </div>
-            )}
-            {compute && (
-                <div class="metric-card">
-                    <span class="metric-label">Training Compute</span>
-                    <span class="metric-value">{compute}</span>
-                </div>
-            )}
-            {repository && (
-                <div class="metric-card">
-                    <span class="metric-label">Repository</span>
-                    <a href={repository} target="_blank" class="metric-value">View Source ↗</a>
-                </div>
-            )}
+            {
+                modelSize && (
+                    <div class="metric-card">
+                        <span class="metric-label">Architecture / Size</span>
+                        <span class="metric-value">{modelSize}</span>
+                    </div>
+                )
+            }
+            {
+                compute && (
+                    <div class="metric-card">
+                        <span class="metric-label">Training Compute</span>
+                        <span class="metric-value">{compute}</span>
+                    </div>
+                )
+            }
+            {
+                repository && (
+                    <div class="metric-card">
+                        <span class="metric-label">Repository</span>
+                        <a
+                            href={repository}
+                            target="_blank"
+                            class="metric-value"
+                        >
+                            View Source ↗
+                        </a>
+                    </div>
+                )
+            }
         </section>
 
         <div class="project-content">
@@ -88,7 +115,7 @@ const { title, description, status, repository, framework, modelSize, compute, s
         font-size: 0.85rem;
         font-family: var(--font-mono);
         background: var(--bg-muted);
-        color: var(--gray-slate);
+        color: var(--gray-dark);
         border-radius: var(--radius-sm);
         border: 1px solid var(--border-light);
     }
