@@ -106,7 +106,6 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	.blog-hero-card {
 		background: var(--bg-card);
 		border: 1px solid var(--border-subtle);
-		border-left: 4px solid var(--accent);
 		border-radius: var(--radius-lg);
 		padding: 2.5rem;
 		margin-bottom: 2.5rem;
@@ -226,7 +225,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	}
 
 	.prose :global(blockquote) {
-		border-left: 4px solid var(--accent);
+		border: 1px solid var(--border-subtle);
 		background: var(--bg-card);
 		padding: 1.2em 1.5em;
 		margin: 2em 0;

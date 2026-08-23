@@ -171,10 +171,11 @@ pre > code {
 }
 
 blockquote {
-  border-left: 4px solid var(--accent);
-  padding: 0 0 0 20px;
-  margin: 0;
-  font-size: 1.333em;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.2em 1.5em;
+  margin: 1.5em 0;
+  font-size: 1.1em;
   color: var(--text-body);
 }
 
