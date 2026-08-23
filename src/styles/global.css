@@ -82,23 +82,38 @@ body {
 
 /* Ambient Reading Theme (Dark Mode for single detail pages) */
 body.theme-dark {
-  background-color: #0b0f19;
+  background-color: transparent;
   color: #cbd5e1;
   --text-heading: #f8fafc;
   --text-body: #cbd5e1;
   --text-muted: #94a3b8;
   --black: #f8fafc;
   --gray-slate: #cbd5e1;
-  --bg-card: rgba(15, 23, 42, 0.75);
-  --bg-card-hover: rgba(30, 41, 59, 0.85);
-  --border-subtle: rgba(255, 255, 255, 0.12);
+  --bg-card: rgba(15, 23, 42, 0.8);
+  --bg-card-hover: rgba(30, 41, 59, 0.9);
+  --border-subtle: rgba(255, 255, 255, 0.15);
   --border-accent: rgba(69, 63, 254, 0.45);
 }
 
 body.theme-dark::before {
-  opacity: 0.15;
-  filter: invert(0.9) hue-rotate(180deg);
+  opacity: 0.65;
+  filter: brightness(0.7) contrast(1.1);
   transition: opacity 0.4s ease, filter 0.4s ease;
+}
+
+body.theme-dark::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: rgba(11, 15, 25, 0.82);
+  z-index: -1;
+  pointer-events: none;
+  backdrop-filter: blur(3px);
+  transition: opacity 0.4s ease;
 }
 
 * {
