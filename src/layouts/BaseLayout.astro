@@ -1,0 +1,34 @@
+---
+import type { ImageMetadata } from 'astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import InteractiveCanvas from '../components/InteractiveCanvas.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	image?: ImageMetadata;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} image={image} />
+	</head>
+	<body>
+		<InteractiveCanvas />
+		<Header />
+		<main>
+			<slot />
+		</main>
+		<Footer />
+
+		<script>
+			import '../scripts/interactive.ts';
+		</script>
+	</body>
+</html>

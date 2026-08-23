@@ -1,7 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
@@ -19,62 +17,96 @@ const pastEvents = allEvents
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <BaseHead title={`Events | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-        <Header />
-        <main>
-            <section>
-                <h3>Upcoming Events</h3>
-                {upcomingEvents.length > 0 ? (
-                    <ul>
-                        {
-                            upcomingEvents.map((event) => (
-                                <li>
-                                    <a href={`/events/${event.id}/`}>
-                                        <h4 class="title">{event.data.title}</h4>
-                                        <p class="date">
-                                            <FormattedDate date={event.data.pubDate} />
-                                        </p>
-                                        <p>📍 {event.data.location}</p>
-                                    </a>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                ) : (
-                    <p>No upcoming events scheduled at the moment. Check back soon!</p>
-                )}
-            </section>
+<BaseLayout title={`Events | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+    <section class="reveal-on-scroll">
+        <h3>Upcoming Events</h3>
+        {upcomingEvents.length > 0 ? (
+            <ul class="events-list">
+                {
+                    upcomingEvents.map((event) => (
+                        <li class="event-card reveal-on-scroll">
+                            <a href={`/events/${event.id}/`}>
+                                <h4 class="title">{event.data.title}</h4>
+                                <p class="date">
+                                    <FormattedDate date={event.data.pubDate} />
+                                </p>
+                                <p class="location">📍 {event.data.location}</p>
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        ) : (
+            <p>No upcoming events scheduled at the moment. Check back soon!</p>
+        )}
+    </section>
 
-            <hr />
+    <hr />
 
-            <section>
-                <h3>Past Events</h3>
-                {pastEvents.length > 0 ? (
-                    <ul>
-                        {
-                            pastEvents.map((event) => (
-                                <li>
-                                    <a href={`/events/${event.id}/`}>
-                                        <h4 class="title">{event.data.title}</h4>
-                                        <p class="date">
-                                            <FormattedDate date={event.data.pubDate} />
-                                        </p>
-                                        <p>📍 {event.data.location}</p>
-                                    </a>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                ) : (
-                    <p>No past events to show.</p>
-                )}
-            </section>
-        </main>
-        <Footer />
-    </body>
-</html>
+    <section class="reveal-on-scroll">
+        <h3>Past Events</h3>
+        {pastEvents.length > 0 ? (
+            <ul class="events-list">
+                {
+                    pastEvents.map((event) => (
+                        <li class="event-card reveal-on-scroll">
+                            <a href={`/events/${event.id}/`}>
+                                <h4 class="title">{event.data.title}</h4>
+                                <p class="date">
+                                    <FormattedDate date={event.data.pubDate} />
+                                </p>
+                                <p class="location">📍 {event.data.location}</p>
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        ) : (
+            <p>No past events to show.</p>
+        )}
+    </section>
+</BaseLayout>
+
+<style>
+    h3 {
+        color: var(--black);
+    }
+    .events-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 1rem 0 2rem 0;
+    }
+    .event-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1rem;
+        transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .event-card:hover {
+        border-color: var(--border-accent);
+        background: var(--bg-card-hover);
+    }
+    .event-card a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+    .title {
+        margin: 0 0 0.5rem 0;
+        color: var(--black);
+        font-size: 1.25rem;
+    }
+    .date {
+        margin: 0 0 0.25rem 0;
+        font-size: 0.9rem;
+        color: var(--accent);
+        font-family: var(--font-mono);
+    }
+    .location {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--gray-slate);
+    }
+</style>

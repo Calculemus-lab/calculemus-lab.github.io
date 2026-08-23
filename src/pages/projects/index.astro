@@ -1,7 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 
@@ -10,93 +8,94 @@ const projects = (await getCollection('projects')).sort(
 );
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <BaseHead title={`System Projects | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-        <style>
-            .project-list {
-                list-style-type: none;
-                padding: 0;
+<BaseLayout title={`System Projects | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+    <section class="reveal-on-scroll">
+        <h2>Active Projects</h2>
+        <ul class="project-list">
+            {
+                projects.map((project) => (
+                    <li class="project-card reveal-on-scroll">
+                        <a href={`/projects/${project.id}/`}>
+                            <div class="project-header">
+                                <h3 class="project-title">{project.data.title}</h3>
+                                <span class="status-indicator">STATUS: {project.data.status}</span>
+                            </div>
+                            <p>{project.data.description}</p>
+                            <div class="metrics-row">
+                                <span class="metric-item"><strong>Framework</strong> {project.data.framework}</span>
+                                {project.data.modelSize && <span class="metric-item"><strong>Architecture</strong> {project.data.modelSize}</span>}
+                                {project.data.compute && <span class="metric-item"><strong>Hardware</strong> {project.data.compute}</span>}
+                            </div>
+                        </a>
+                    </li>
+                ))
             }
-            .project-card {
-                border: 1px solid #e9ecef;
-                border-radius: 8px;
-                padding: 1.5rem;
-                margin-bottom: 1.5rem;
-                transition: border-color 0.2s ease;
-            }
-            .project-card:hover {
-                border-color: #adb5bd;
-            }
-            .project-card a {
-                text-decoration: none;
-                color: inherit;
-            }
-            .project-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: baseline;
-                border-bottom: 1px solid #f8f9fa;
-                padding-bottom: 0.5rem;
-                margin-bottom: 1rem;
-            }
-            .project-title {
-                margin: 0;
-                font-size: 1.5rem;
-            }
-            .status-indicator {
-                font-family: 'Courier New', Courier, monospace;
-                font-size: 0.85rem;
-                background: #f8f9fa;
-                padding: 0.2rem 0.6rem;
-                border-radius: 4px;
-                border: 1px solid #dee2e6;
-            }
-            .metrics-row {
-                display: flex;
-                gap: 2rem;
-                font-family: 'Courier New', Courier, monospace;
-                font-size: 0.9rem;
-                color: #495057;
-                margin-top: 1rem;
-            }
-            .metric-item strong {
-                color: #212529;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-                font-size: 0.8rem;
-                text-transform: uppercase;
-                display: block;
-            }
-        </style>
-    </head>
-    <body>
-        <Header />
-        <main>
-            <section>
-                <h2>Active Projects</h2>
-                <ul class="project-list">
-                    {
-                        projects.map((project) => (
-                            <li class="project-card">
-                                <a href={`/projects/${project.id}/`}>
-                                    <div class="project-header">
-                                        <h3 class="project-title">{project.data.title}</h3>
-                                        <span class="status-indicator">STATUS: {project.data.status}</span>
-                                    </div>
-                                    <p>{project.data.description}</p>
-                                    <div class="metrics-row">
-                                        <span class="metric-item"><strong>Framework</strong> {project.data.framework}</span>
-                                        {project.data.modelSize && <span class="metric-item"><strong>Architecture</strong> {project.data.modelSize}</span>}
-                                        {project.data.compute && <span class="metric-item"><strong>Hardware</strong> {project.data.compute}</span>}
-                                    </div>
-                                </a>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </section>
-        </main>
-        <Footer />
-    </body>
-</html>
+        </ul>
+    </section>
+</BaseLayout>
+
+<style>
+    h2 {
+        color: var(--black);
+    }
+    .project-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .project-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .project-card:hover {
+        border-color: var(--border-accent);
+        background: var(--bg-card-hover);
+    }
+    .project-card a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        border-bottom: 1px solid var(--border-subtle);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    .project-title {
+        margin: 0;
+        font-size: 1.5rem;
+        color: var(--black);
+    }
+    .project-card p {
+        color: var(--gray-slate);
+    }
+    .status-indicator {
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        background: var(--bg-muted);
+        color: var(--gray-slate);
+        padding: 0.2rem 0.6rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-light);
+    }
+    .metrics-row {
+        display: flex;
+        gap: 2rem;
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
+        color: var(--gray-slate);
+        margin-top: 1rem;
+    }
+    .metric-item strong {
+        color: var(--black);
+        font-family: var(--font-sans);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        display: block;
+    }
+</style>

@@ -1,17 +1,17 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
 import Layout from '../layouts/BlogPost.astro';
+import { ORGANIZATION } from '../consts';
 ---
 
 <Layout
-    title="About Calculemus"
-    description="The student-run AI team at Leiden University (LIACS)."
+    title={`About ${ORGANIZATION.name}`}
+    description={`The student-run AI team at ${ORGANIZATION.fullUniversity}.`}
     pubDate={new Date('May 08 2026')}
 >
-    <img src="/us.jpg" alt="The Calculemus team" />
+    <img src="/us.jpg" alt={`The ${ORGANIZATION.name} team`} />
 
     <p>
-        <strong>"Calculemus"</strong> means <em>Let us calculate</em>. It's a phrase from Leibniz, who wanted to solve problems purely through computation. We're a team of computer science and AI students of <strong>Leiden University (LIACS)</strong> solving challenges of the current (scientific) community.
+        <strong>"{ORGANIZATION.name}"</strong> means <em>Let us calculate</em>. It's a phrase from Leibniz, who wanted to solve problems purely through computation. We're a team of computer science and AI students of <strong>{ORGANIZATION.fullUniversity}</strong> solving challenges of the current (scientific) community.
     </p>
 
     <h4>What we do</h4>
@@ -21,10 +21,10 @@ import Layout from '../layouts/BlogPost.astro';
 
     <h4>The Community</h4>
     <p>
-        Studying AI is easier (and a lot more fun) when you aren't doing it alone. Calculemus acts as a place for students who want to build, debug, or research together. We run a few main events throughout the year:
+        Studying AI is easier (and a lot more fun) when you aren't doing it alone. {ORGANIZATION.name} acts as a place for students who want to build, debug, or research together. We run a few main events throughout the year:
     </p>
     <ul>
-        <li><strong>Tech Talks:</strong> Technical deep dives by (LIACS) researchers and industry.</li>
+        <li><strong>Tech Talks:</strong> Technical deep dives by ({ORGANIZATION.department}) researchers and industry.</li>
         <li><strong>Hackathons:</strong> Short (and highly energized) sprints to build working models from scratch.</li>
         <li><strong>Game Nights:</strong> Low-key evenings where we bring laptops, grab pizza, and try to beat our self-made agents.</li>
     </ul>
