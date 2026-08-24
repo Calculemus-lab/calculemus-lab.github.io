@@ -17,7 +17,7 @@ Games, ideas, good company, all in one afternoon!
 
 **Claartje Barkof** — Scientist Integrator at GPT-NL, the Netherlands' own sovereign language model, built by TNO, NFI, and SURF. She'll take us behind the scenes of what it actually takes to build a national AI model from scratch.
 
-**Frank Sierra** — Senior AI Engineer at ML6, working on AI-driven protein engineering and pharma research. With a background spanning parasitology, physics, and neuroscience, he'll share what it's like using AI in cutting-edge research.
+**Frank Sierra** — Senior AI Engineer at ML6, working on AI-driven protein engineering and pharma research. With a background spanning AI engineering, parasitology, and neuroscience, he'll share what it's like using AI in cutting-edge research.
 
 ---
 
