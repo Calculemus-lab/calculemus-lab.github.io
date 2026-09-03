@@ -23,4 +23,5 @@ export const NAV_ITEMS = [
 export const SOCIAL_LINKS = {
 	instagram: 'https://instagram.com/calculemus_team',
 	linkedin: 'https://www.linkedin.com/company/calculemus-leiden/about/',
+	email: 'mailto:calculemus@liacs.leidenuniv.nl',
 } as const;
