@@ -1,0 +1,340 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ORGANIZATION, SITE_TITLE } from '../consts';
+
+// Update these each recruitment round.
+const RECRUITMENT = {
+    deadline: '8 November',
+    interviewDate: 'Thursday, 12 November',
+    email: 'calculemus@liacs.leidenuniv.nl',
+};
+
+const positions = [
+    {
+        title: 'AI Engineer',
+        count: '6 positions',
+        blurb: 'Work on exciting AI projects, take on coding challenges and join hackathons with fellow students.',
+        requirements: [
+            'Be a student at Leiden University for the spring semester and the following autumn semester, committing to at least one year with the team.',
+            'Be enthusiastic about joining the Leiden University AI Team and working together with other students.',
+            'Have at least some coding experience.',
+            'Being in the team is a wonderful opportunity to develop your coding and professional skills; however, it does require a time investment.',
+        ],
+    },
+    {
+        title: 'Event Coordinator',
+        count: '1 position',
+        blurb: 'Help organize events, bring students together, and create opportunities for the team to connect and grow.',
+        requirements: [
+            'Be a student at Leiden University for the spring semester and the following autumn semester, committing to at least one year with the team.',
+            'Be enthusiastic about joining the Leiden University AI Team and bringing students together.',
+            'Have good organizational and communication skills.',
+            'Be proactive, reliable, and comfortable coordinating events (experience in event coordination is a plus).',
+            'Be willing to invest time and effort in planning and organizing events throughout the academic year.',
+        ],
+    },
+];
+
+const expectations = [
+    'Attend the monthly team meeting, held on the first Tuesday of each month from 16:00 to 18:00.',
+    'Attend a weekly meeting with the AI engineers.',
+    'Have an evening free per semester for a larger social activity with the team.',
+    'Set aside time for coding (AI Engineers only).',
+    'Have time to join a hackathon once per quarter of a semester (AI Engineers only).',
+    'Organize events every couple of months and reach out to other universities and organizations to establish collaborations (Event Coordinator only).',
+];
+
+const perks = [
+    'A spot in the Leiden University AI Team!',
+    "The opportunity to work alongside some of Leiden's talented AI engineers on coding challenges and hackathons.",
+    'The chance to develop your personal and professional skills beyond academic courses.',
+    'Monthly pizza meetings and social events.',
+    'Free coffee, tea, and snacks!',
+];
+---
+
+<BaseLayout
+    title={`Join ${ORGANIZATION.name} | ${SITE_TITLE}`}
+    description={`${ORGANIZATION.name} is recruiting six AI Engineers and an Event Coordinator. Apply by ${RECRUITMENT.deadline}.`}
+>
+    <article class="join-page-container reveal-on-scroll">
+        <header class="page-header">
+            <p class="eyebrow">We're recruiting</p>
+            <h1>Are you {ORGANIZATION.name}' next AI engineer?</h1>
+            <p class="subtitle">
+                This semester, {ORGANIZATION.name} is recruiting <strong>six new AI Engineers</strong> and an <strong>Event Coordinator</strong> to join the team!
+            </p>
+            <hr />
+        </header>
+
+        <div class="key-dates">
+            <div class="date-card">
+                <span class="date-label">Apply by</span>
+                <span class="date-value">{RECRUITMENT.deadline}</span>
+            </div>
+            <div class="date-card">
+                <span class="date-label">Interviews</span>
+                <span class="date-value">{RECRUITMENT.interviewDate}</span>
+            </div>
+            <a class="date-card apply-card" href={`mailto:${RECRUITMENT.email}?subject=Application%20Calculemus`}>
+                <span class="date-label">Send to</span>
+                <span class="date-value">{RECRUITMENT.email}</span>
+            </a>
+        </div>
+
+        <div class="prose">
+            <p>
+                Are you enthusiastic about working on coding challenges besides your studies, or passionate about organizing events and bringing people together? This is your chance!
+            </p>
+            <p>
+                As part of the Leiden University AI Team, you will have the opportunity to collaborate with talented fellow students, work on exciting AI projects, and take on coding challenges. As an Event Coordinator, you'll help organize events, bring students together, and create opportunities for the team to connect and grow. Additionally, you will get the opportunity to develop your personal and professional skills beyond academic courses.
+            </p>
+
+            <h3>Open positions</h3>
+        </div>
+
+        <div class="positions">
+            {positions.map((pos) => (
+                <section class="position-card">
+                    <div class="position-head">
+                        <h4>{pos.title}</h4>
+                        <span class="badge">{pos.count}</span>
+                    </div>
+                    <p class="position-blurb">{pos.blurb}</p>
+                    <p class="req-label">Requirements</p>
+                    <ul>
+                        {pos.requirements.map((r) => <li>{r}</li>)}
+                    </ul>
+                </section>
+            ))}
+        </div>
+
+        <div class="prose">
+            <h3>As a team member, you'll be expected to</h3>
+            <ul>
+                {expectations.map((e) => <li>{e}</li>)}
+            </ul>
+
+            <h3>What you will get</h3>
+            <ul>
+                {perks.map((p) => <li>{p}</li>)}
+            </ul>
+
+            <h3>How to apply</h3>
+            <p>
+                Send your application to <a href={`mailto:${RECRUITMENT.email}`}>{RECRUITMENT.email}</a> by <strong>{RECRUITMENT.deadline}</strong>. Your application should consist of:
+            </p>
+            <ul>
+                <li>A short motivation letter (approximately half an A4 page) stating the position you apply to;</li>
+                <li>Your CV.</li>
+            </ul>
+            <p>
+                Short interviews with candidates will take place on <strong>{RECRUITMENT.interviewDate}</strong>.
+            </p>
+            <p>
+                Whether you're passionate about AI and coding or enjoy planning and organizing events, we'd love to hear from you!
+            </p>
+        </div>
+
+        <div class="cta">
+            <a class="cta-button" href={`mailto:${RECRUITMENT.email}?subject=Application%20Calculemus`}>Apply now</a>
+            <a class="cta-secondary" href="/team">Learn more about the team →</a>
+        </div>
+    </article>
+</BaseLayout>
+
+<style>
+    .join-page-container {
+        max-width: var(--max-width-main);
+        margin: 0 auto;
+    }
+    .page-header {
+        margin-bottom: 2rem;
+    }
+    .eyebrow {
+        display: inline-block;
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: var(--accent-glow);
+        padding: 0.3em 0.8em;
+        border-radius: 999px;
+        margin-bottom: 1rem;
+    }
+    .page-header h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+        color: var(--black);
+        margin-bottom: 0.75rem;
+    }
+    .subtitle {
+        font-size: 1.15rem;
+        color: var(--gray-slate);
+        margin-bottom: 1.5rem;
+    }
+    .subtitle strong {
+        color: var(--black);
+    }
+
+    /* Key dates */
+    .key-dates {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+    }
+    .date-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 1rem 1.25rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        min-width: 0;
+    }
+    .date-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--gray-muted);
+    }
+    .date-value {
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--black);
+        overflow-wrap: anywhere;
+    }
+    .apply-card {
+        border-color: var(--border-accent);
+        transition: background 0.2s, box-shadow 0.2s;
+    }
+    .apply-card .date-value {
+        color: var(--accent);
+        font-size: 0.95rem;
+    }
+    .apply-card:hover {
+        background: var(--bg-card-hover);
+        box-shadow: 0 4px 16px var(--accent-glow);
+    }
+
+    /* Prose (matches team page) */
+    .prose {
+        color: var(--gray-slate);
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+    .prose h3 {
+        color: var(--black);
+        margin-top: 2em;
+        margin-bottom: 0.75em;
+        font-size: 1.5rem;
+    }
+    .prose p, .prose li {
+        color: var(--gray-slate);
+        margin-bottom: 1em;
+    }
+    .prose strong {
+        color: var(--black);
+    }
+
+    /* Positions */
+    .positions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+        margin-bottom: 1rem;
+    }
+    .position-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+    }
+    .position-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+    .position-head h4 {
+        margin: 0;
+        font-size: 1.3rem;
+        color: var(--black);
+    }
+    .badge {
+        flex-shrink: 0;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--accent);
+        border: 1px solid var(--border-accent);
+        border-radius: 999px;
+        padding: 0.2em 0.7em;
+    }
+    .position-blurb {
+        color: var(--gray-slate);
+        margin-bottom: 1rem;
+    }
+    .req-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--gray-muted);
+        margin-bottom: 0.5rem;
+    }
+    .position-card ul {
+        padding-left: 1.2em;
+        margin: 0;
+    }
+    .position-card li {
+        color: var(--gray-slate);
+        font-size: 0.98rem;
+        line-height: 1.6;
+        margin-bottom: 0.6em;
+    }
+
+    /* Call to action */
+    .cta {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin: 2.5rem 0 1rem;
+    }
+    .cta-button {
+        display: inline-block;
+        background: var(--accent);
+        color: var(--white);
+        font-weight: 600;
+        text-decoration: none;
+        padding: 0.8em 1.8em;
+        border-radius: var(--radius-md);
+        box-shadow: 0 4px 16px var(--accent-glow);
+        transition: background 0.2s, transform 0.2s;
+    }
+    .cta-button:hover {
+        background: var(--accent-hover);
+        color: var(--white);
+        transform: translateY(-1px);
+    }
+    .cta-secondary {
+        font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+        .page-header h1 {
+            font-size: 2rem;
+        }
+        .key-dates,
+        .positions {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

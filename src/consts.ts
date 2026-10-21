@@ -18,6 +18,7 @@ export const NAV_ITEMS = [
 	{ href: '/projects', label: 'Projects' },
 	{ href: '/events', label: 'Events' },
 	{ href: '/team', label: 'Team' },
+	{ href: '/join', label: 'Join us' },
 ] as const;
 
 export const SOCIAL_LINKS = {
