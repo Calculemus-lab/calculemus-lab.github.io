@@ -13,7 +13,6 @@ const positions = [
     {
         title: 'AI Engineer',
         count: '6 positions',
-        blurb: 'Work on exciting AI projects, take on coding challenges and join hackathons with fellow students.',
         requirements: [
             'Have at least some coding experience.',
             'Being in the team is a wonderful opportunity to develop your coding and professional skills; however, it does require a time investment.',
@@ -22,7 +21,6 @@ const positions = [
     {
         title: 'Event Coordinator',
         count: '1 position',
-        blurb: 'Help organize events, bring students together, and create opportunities for the team to connect and grow.',
         requirements: [
             'Have good organizational and communication skills.',
             'Be proactive, reliable, and comfortable coordinating events (experience in event coordination is a plus).',
@@ -99,7 +97,6 @@ const perks = [
                         <h4>{pos.title}</h4>
                         <span class="badge">{pos.count}</span>
                     </div>
-                    <p class="position-blurb">{pos.blurb}</p>
                     <p class="req-label">Requirements</p>
                     <ul>
                         {pos.requirements.map((r) => <li>{r}</li>)}
@@ -275,10 +272,6 @@ const perks = [
         border: 1px solid var(--border-accent);
         border-radius: 999px;
         padding: 0.2em 0.7em;
-    }
-    .position-blurb {
-        color: var(--gray-slate);
-        margin-bottom: 1rem;
     }
     .req-label {
         font-size: 0.8rem;
